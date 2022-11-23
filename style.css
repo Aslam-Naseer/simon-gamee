@@ -1,0 +1,175 @@
+:root {
+  --background: rgb(20, 20, 20);
+  --tiles: rgb(23, 23, 23);
+  --text: rgb(255, 255, 255);
+
+  --tile-grad: rgba(255, 255, 255, 0.06);
+  --new-shadow: rgba(255, 255, 255, 0.3);
+
+  --yellow: #E1FF01;
+  --green: #23FB04;
+  --blue: #00F7F7;
+  --red: #F90275;
+
+}
+
+.light {
+  --background: rgb(250, 250, 250);
+  --tiles: rgb(230, 230, 230);
+  --text: rgb(25, 25, 25);
+
+  --tile-grad: rgba(25, 25, 25, 0.12);
+  --new-shadow: rgba(0, 0, 0, 0.3);
+
+  --yellow: #ffb900;
+  --green: #7fba00;
+  --blue: #00a4ef;
+  --red: #f25022;
+
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  font-family: cursive;
+  user-select: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  transition: all 250ms;
+}
+
+#game {
+  margin: auto;
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  width: 60vh;
+  aspect-ratio: 1/1;
+  gap: 5%;
+  justify-content: space-evenly;
+}
+
+.square {
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+}
+
+.square:hover {
+  scale: 1.07;
+}
+
+.square::after,
+.square::before {
+  content: "";
+  border-radius: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+
+  transition: opacity 500ms;
+}
+
+.square::before {
+  background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y),
+      var(--text), transparent 40%);
+  z-index: 1;
+}
+
+.square::after {
+  background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y),
+      var(--tile-grad), transparent 40%);
+  z-index: 3;
+
+}
+
+.square:hover::after {
+  opacity: 1;
+}
+
+#game:hover>.square::before {
+  opacity: 1;
+}
+
+.content {
+  background-color: var(--tiles);
+  border-radius: inherit;
+  inset: 1px;
+  position: absolute;
+  z-index: 2;
+  transition: background-color 100ms;
+}
+
+
+.A {
+  background-color: var(--yellow);
+}
+
+.B {
+  background-color: var(--blue);
+}
+
+.C {
+  background-color: var(--red);
+}
+
+.D {
+  background-color: var(--green);
+}
+
+#homePage {
+  margin: auto;
+  display: grid;
+  align-content: center;
+}
+
+.title {
+  font-size: 45px;
+}
+
+#newGame {
+  background-color: rgb(240, 76, 0);
+  color: var(--text);
+  padding: 7px 20px;
+  margin: auto;
+  cursor: pointer;
+  box-shadow: 5px 5px 3px var(--new-shadow);
+  font-size: 20px;
+  border: none;
+  transition: all 0.15s;
+}
+
+#newGame:hover {
+  box-shadow: none;
+  translate: 5px 5px;
+}
+
+#score {
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+
+.unclickable {
+  pointer-events: none;
+}
+
+#theme {
+  position: absolute;
+  top: 15vh;
+  right: 5vw;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+  transition: scale 0.15s;
+}
+
+#theme:hover {
+  scale: 1.5;
+}

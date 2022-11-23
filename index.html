@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Simon game clone</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+  </head>
+
+  <body>
+    <main id="game">
+      <div class="square A">
+        <div class="content"></div>
+      </div>
+      <div class="square B">
+        <div class="content"></div>
+      </div>
+      <div class="square C">
+        <div class="content"></div>
+      </div>
+      <div class="square D">
+        <div class="content"></div>
+      </div>
+    </main>
+
+    <section id="homePage">
+      <h1 class="title">Simon Game</h1>
+      <button onclick="newGame()" id="newGame">New Game</button>
+    </section>
+    <p id="score"></p>
+
+    <span id="theme" onclick="themeSwitch()" title="Toggle Theme">&#9728;</span>
+  </body>
+</html>
